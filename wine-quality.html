@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wine Quality Predictor | Data Science Portfolio</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+
+
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">My Portfolio</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+
+        <!-- Hero -->
+        <header class="bg-light py-5">
+            <div class="container">
+                <h1 class="display-4">Wine Quality Predictor Using Machine Learning</h1>
+                <p class="lead">
+                    An end-to-end data science project demonstrating data cleaning,
+                    exploratory data analysis, machine learning, and model evaluation
+                    using Python and Scikit-learn.
+                </p>
+                <a
+                    class="btn btn-primary"
+                    href="https://github.com/LemuelBryant/wine-quality-predictor"
+                    target="_blank"
+                >
+                    GitHub Repository
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container my-5">
+            <div class="row">
+                <!-- Table of Contents -->
+                <div class="col-lg-3">
+                    <div class="sticky-top pt-3">
+                        <h4>Contents</h4>
+                        <div class="list-group">
+                            <a href="#overview" class="list-group-item list-group-item-action">
+                                Project Overview
+                            </a>
+                            <a href="#dataset" class="list-group-item list-group-item-action">
+                                Datasets
+                            </a>
+                            <a href="#cleaning" class="list-group-item list-group-item-action">
+                                Data Cleaning
+                            </a>
+                            <a href="#eda" class="list-group-item list-group-item-action">
+                                Exploratory Data Analysis
+                            </a>
+                            <a href="#modeling" class="list-group-item list-group-item-action">
+                                Model Development
+                            </a>
+                            <a href="#evaluation" class="list-group-item list-group-item-action">
+                                Model Evaluation
+                            </a>
+                            <a href="#deployment" class="list-group-item list-group-item-action">
+                                Deployment
+                            </a>
+                            <a href="#findings" class="list-group-item list-group-item-action">
+                                Key Findings
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study -->
+                <div class="col-lg-9">
+                    <section id="overview" class="mb-5">
+                        
+                        <h2>Project Overview</h2>
+                        <p>
+                            The goal of this project was to explore the relationship between the
+                            physicochemical properties of wine and its quality rating using
+                            exploratory data analysis and supervised machine learning.
+                            <br><br>
+                            Using separate red and white wine datasets, I performed data
+                            inspection, cleaning, visualization, and feature engineering before
+                            developing and evaluating several regression models. Random Forest
+                            models were selected and optimized through hyperparameter tuning to
+                            predict numerical wine quality scores based on measured chemical
+                            characteristics.
+                            <br><br>
+                            The project also involved developing and deploying an interactive
+                            Streamlit application that allows users to enter wine measurements
+                            and receive a predicted quality score from the corresponding red or
+                            white wine model.
+                        </p>
+
+                        <table class="table table-bordered w-90">
+                            <tr>
+                                <th>Datasets</th>
+                                <td>Red and White Wine Quality</td>
+                            </tr>
+                            <tr>
+                                <th>Data Source</th>
+                                <td>UCI Machine Learning Repository / Kaggle dataset</td>
+                            </tr>
+                            <tr>
+                                <th>Problem Type</th>
+                                <td>Supervised Regression</td>
+                            </tr>
+                            <tr>
+                                <th>Target</th>
+                                <td>Quality</td>
+                            </tr>
+                            <tr>
+                                <th>Algorithms</th>
+                                <td>Linear Regression, Decision Tree, Random Forest, Gradient Boosting</td>
+                            </tr>
+                            <tr>
+                                <th>Final Model</th>
+                                <td>Random Forest</td>
+                            </tr>
+                            <tr>
+                                <th>Deployment</th>
+                                <td><a href="https://lemuelbryant-wine-quality-predictor-appstreamlit-app-7cdsgj.streamlit.app/" target="_blank" rel="noopener noreferrer">
+                                Streamlit Community Cloud</a></td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section id="dataset" class="mb-5">
+                        <h2>Datasets</h2>
+                        <p>
+                            This project uses two wine quality datasets containing
+                            physicochemical measurements of red and white wines. Each
+                            observation represents a wine sample, with laboratory
+                            measurements describing its chemical composition and a quality
+                            rating assigned by human tasters.<br>
+                            <br>
+                            The target variable, quality, is an integer rating. The
+                            remaining columns represent measurable properties such as acidity,
+                            residual sugar, chlorides, sulfur dioxide, density, pH,
+                            sulphates, and alcohol.<br>
+                            <br>
+                            The red and white wine datasets were analyzed separately to
+                            investigate differences in their chemical characteristics and
+                            develop independent prediction models.
+                        </p>
+                    </section>
+
+                    <section id="cleaning" class="mb-5">
+                        <h2>Data Cleaning</h2>
+                        <p>
+                            Both datasets were inspected for missing values, duplicate records,
+                            data types, and inconsistencies before modeling.<br>
+                            <br>
+                            Duplicate records were identified and evaluated during data
+                            preparation. There were no missing values in either dataset,
+                            and all columns had appropriate data types.<br>
+                            <br>
+                            Feature engineering was also performed to create additional
+                            variables, including so2_ratio, calculated by dividing free sulfur
+                            dioxide by total sulfur dioxide.<br>
+                            <br>
+                            The final Random Forest models used 12 input features, including
+                            the engineered so2_ratio variable.
+                        </p>
+                    </section>
+
+                    <section id="eda" class="mb-5">
+                        <h2>Exploratory Data Analysis</h2>
+
+                        <h4>Feature Histograms</h4>
+                        <img
+                            src="images/wine-quality/red-histogram.png"
+                            class="img-fluid rounded shadow mb-3"
+                            alt="Red Wine Feature Histograms"
+                        >
+                        <p>
+                            Histograms were created for each variable to examine their distributions and identify potential skewness or unusual patterns.<br>
+                            <br>
+                            Red wine features generally exhibited more skewed distributions compared to white wine, which had more symmetric distributions for several variables.
+                        </p>
+                        <img
+                            src="images/wine-quality/white-histogram.png"
+                            class="img-fluid rounded shadow mb-3"
+                            alt="White Wine Feature Histograms"
+                        >
+                        <p>
+                            White wine features generally exhibited more symmetric distributions compared to red wine, which had more skewed distributions for several variables.
+                        </p>
+
+                        <h4>Correlation Heatmap</h4>
+                        <img
+                            src="images/wine-quality/red-correlation.png"
+                            class="img-fluid rounded shadow mb-3"
+                            alt=" Red Wine Correlation Heatmap"
+                        >
+                        <p>
+                            Correlation analysis was used to examine relationships between
+                            physicochemical measurements and wine quality.<br>
+                            <br>
+                            For red wine, alcohol showed a positive correlation with quality
+                            (approximately 0.48), while volatile acidity showed a negative
+                            correlation (approximately -0.39). These relationships helped
+                            identify potentially useful predictors for subsequent modeling.
+                        </p>
+                        <img
+                            src="images/wine-quality/white-correlation.png"
+                            class="img-fluid rounded shadow mb-3"
+                            alt=" White Wine Correlation Heatmap"
+                        >
+                        <p>
+                            For white wine, alcohol also showed a positive correlation with
+                            quality (approximately 0.44), while density showed a
+                            negative correlation (approximately -0.31).<br>
+                            <br>
+                            These findings suggest that red wine and white wine have slightly
+                            different correlation patterns with respect to their physicochemical
+                            properties.
+                        </p>
+
+                        <h4>Distribution of Alcohol by Quality</h4>
+                        <img
+                            src="images/wine-quality/red-boxplot.png"
+                            class="img-fluid rounded shadow mb-3"
+                            alt="Alcohol by Quality Boxplots"
+                        >
+                        <p>
+                           Boxplots were created for each variable to examine their distributions 
+                           and identify potential skewness or unusual patterns.<br>
+                            <br>
+                            The red wine box plot shows the distribution of alcohol content across 
+                            different quality scores. Red wines with quality scores of 3, 4, and 5 have 
+                            median alcohol content near 10% ABV. The median increases for wines 
+                            rated 6, 7, and 8, reaching approximately 12% ABV for the 
+                            highest-quality wines.<br>
+                            <br>
+                            The quality score of 5 also contains several observations above the 
+                            upper whisker, indicating wines with unusually high alcohol content 
+                            compared with others in that quality category.<br>
+                            <br>
+                            Overall, the visualization suggests a positive relationship between alcohol 
+                            content and perceived wine quality. As quality scores increase, median 
+                            alcohol content generally increases as well. This pattern is consistent 
+                            with the correlation analysis, which found alcohol to have the strongest 
+                            positive correlation with wine quality (0.48).
+                        </p>
+
+                        <img
+                            src="images/wine-quality/white-boxplot.png"
+                            class="img-fluid rounded shadow mb-3"
+                            alt="White Wine Feature Boxplots"
+                        >
+                        <p>
+                            The box plot shows the distribution of alcohol content across white wine 
+                            quality scores. Wines with quality scores of 3, 4, and 5 have median 
+                            alcohol content near 10% ABV. The median increases for wines rated 6, 
+                            7, 8, and 9, reaching approximately 12.5% ABV for the highest-quality 
+                            wines.<br>
+                            <br>
+                            The quality score of 5 also contains several observations above the 
+                            upper whisker, indicating wines with unusually high alcohol content compared 
+                            with others in that quality category.<br>
+                            <br>
+                            Overall, the visualization suggests a positive relationship between alcohol 
+                            content and perceived wine quality. As quality scores increase, median 
+                            alcohol content generally increases as well. This pattern is consistent 
+                            with the correlation analysis, which identified alcohol as the feature with 
+                            the strongest positive correlation with wine quality (0.44).
+                        </p>
+
+                    </section>
+
+                    <section id="modeling" class="mb-5">
+                        <h2>Model Development</h2>
+                        <p>
+                            Multiple regression algorithms were trained and evaluated using
+                            separate training and testing datasets. The models included Linear
+                            Regression, Decision Tree Regression, Random Forest Regression,
+                            and Gradient Boosting Regression.<br>
+                            <br>
+                            Model performance was evaluated using R², Mean Absolute Error
+                            (MAE), and Root Mean Squared Error (RMSE).<br>
+                            <br>
+                            Random Forest models were selected for further optimization.
+                            GridSearchCV with five-fold cross-validation was used to tune
+                            their hyperparameters.
+                        </p>
+                        <img
+                            src="images/wine-quality/red-features.png"
+                            class="img-fluid rounded shadow mb-3"
+                            alt="Horizontal bar chart of red wine feature importances"
+                        >
+                        <p>
+                            The feature importance analysis shows that alcohol
+                            was the most influential predictor in the red wine Random Forest
+                            model. Sulphates and volatile acidity were also among the most important
+                            features, followed by total sulfur dioxide and the engineered
+                            so2_ratio feature.<br>
+                            <br>
+                            These results suggest that alcohol content, acidity, and sulfur-related
+                            measurements played important roles in the model's predictions of
+                            red wine quality.
+                        </p>
+
+                        <img
+                            src="images/wine-quality/white-features.png"
+                            class="img-fluid rounded shadow mb-3"
+                            alt="Horizontal bar chart of white wine feature importances"
+                        >
+
+                        <p>
+                            Similar to the red wine model, alcohol was the most
+                            influential predictor in the white wine Random Forest model.
+                            Volatile acidity and free sulfur dioxide were also among the top 
+                            three features. The engineered so2_ratio feature ranked among 
+                            the other important predictors.<br>
+                            <br>
+                            These results indicate that alcohol content, acidity, and sulfur-related
+                            measurements contributed to the model's predictions of white wine
+                            quality.
+                        </p>
+                    </section>
+
+                    <section id="evaluation" class="mb-5">
+                        <h2>Model Evaluation</h2>
+                        <p>
+                            Four regression algorithms were evaluated for each dataset: Linear
+                            Regression, Decision Tree, Random Forest, and Gradient Boosting.<br>
+                            <br>
+                            Model performance was measured using R², Mean Absolute Error (MAE),
+                            and Root Mean Squared Error (RMSE).<br>
+                            <br>
+                            Random Forest models were selected for hyperparameter optimization
+                            using five-fold GridSearchCV. Separate configurations were evaluated
+                            for red and white wine.<br>
+                            <br>
+                            <strong>Red Wine — Final Model</strong><br>
+                            The tuned Random Forest model achieved an R² of 0.474, an MAE of
+                            0.459, and an RMSE of 0.610 on the test dataset.<br>
+                            These results indicate that the model explains approximately 47% of
+                            the variation in red wine quality ratings, with an average absolute
+                            prediction error of approximately 0.46 quality points.<br>
+                            <br>
+                            <strong>White Wine — Final Model</strong><br>
+                            The tuned Random Forest model achieved an R² of 0.337, an MAE of
+                            0.564, and an RMSE of 0.737 on the test dataset.<br>
+                            Hyperparameter tuning produced modest improvements over the untuned
+                            Random Forest model. The tuned model also slightly outperformed the
+                            initial Gradient Boosting model across all three reported metrics.<br>
+                            The results indicate that the model explains approximately 34% of
+                            the variation in white wine quality ratings, with an average absolute
+                            prediction error of approximately 0.56 quality points.<br>
+                            <br>
+                            <strong>Overall Comparison</strong><br>
+                            The red wine model achieved stronger test-set performance than the
+                            white wine model across all three evaluation metrics.<br>
+                            Although hyperparameter tuning improved both models, predictive
+                            performance remained limited. The results demonstrate that
+                            physicochemical measurements contain useful information about wine
+                            quality, but they do not fully explain the variation in human
+                            quality ratings.
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped text-center align-middle">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Evaluation Metric</th>
+                                        <th>Red Wine Model</th>
+                                        <th>White Wine Model</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Model</th>
+                                        <td>Random Forest Regressor</td>
+                                        <td>Random Forest Regressor</td>
+                                    </tr>
+                                    <tr>
+                                        <th>R² Score</th>
+                                        <td>0.474</td>
+                                        <td>0.337</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mean Absolute Error (MAE)</th>
+                                        <td>0.459</td>
+                                        <td>0.564</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Root Mean Squared Error (RMSE)</th>
+                                        <td>0.610</td>
+                                        <td>0.737</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Number of Trees</th>
+                                        <td>300</td>
+                                        <td>200</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Maximum Tree Depth</th>
+                                        <td>10</td>
+                                        <td>20</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Minimum Samples per Leaf</th>
+                                        <td>4</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Minimum Samples to Split</th>
+                                        <td>2</td>
+                                        <td>5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="deployment" class="mb-5">
+                        <h2>Deployment</h2>
+                        <p>
+                            The final red and white wine Random Forest models were saved and
+                            integrated into an interactive Streamlit application.<br>
+                            <br>
+                            Users can select a wine type, enter physicochemical measurements,
+                            and receive a predicted quality score. The application
+                            automatically selects the corresponding trained model and
+                            calculates the engineered sulfur dioxide ratio.<br>
+                            <br>
+                            The application is publicly hosted using Streamlit Community Cloud.
+                            <a href="https://lemuelbryant-wine-quality-predictor-appstreamlit-app-7cdsgj.streamlit.app/" target="_blank" rel="noopener noreferrer">
+                                View the Application
+                            </a>
+                        </p>
+                    </section>
+
+                    <section id="findings" class="mb-5">
+                        <h2>Key Findings</h2>
+                        <ul>
+                            <li>
+                                Alcohol was the most influential feature in both the red and white
+                                wine Random Forest models. Volatile acidity and sulphates were also
+                                among the most important predictors.
+                            </li>
+                            <li>
+                                Ensemble methods, particularly Random Forest and Gradient Boosting,
+                                generally performed better than the Decision Tree models in the
+                                initial model comparisons.
+                            </li>
+                            <li>
+                                Hyperparameter tuning produced modest improvements in Random Forest
+                                performance for both wine types.
+                            </li>
+                            <li>
+                                The final red wine model achieved better test-set performance
+                                (R² = 0.474, MAE = 0.459, RMSE = 0.610) than the white wine model
+                                (R² = 0.337, MAE = 0.564, RMSE = 0.737).
+                            </li>
+                            <li>
+                                The engineered so2_ratio feature appeared among the important
+                                features in the final models, but the feature-engineering experiment
+                                showed only marginal improvement in predictive performance.
+                            </li>
+                            <li>
+                                Separate models were developed for red and white wine to account
+                                for differences in their physicochemical characteristics and
+                                quality distributions.
+                            </li>
+                            <li>
+                                Both models demonstrated that predicting wine quality from
+                                physicochemical measurements is challenging, with substantial
+                                variation in quality scores remaining unexplained.
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-dark text-white text-center py-3">
+            <p class="mb-0">© 2026 Lem Bryant • Data Science Portfolio</p>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
